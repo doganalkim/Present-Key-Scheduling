@@ -7,5 +7,5 @@ Key scheduling algorithm for Present block cipher
 64 bits key length for each round 
 
 # Example Output
-can be found in keys.txt for inital key is equal to 0
+can be found in keys.txt for initial key is equal to 0
 
