@@ -16,21 +16,9 @@ void readKey()
 {
     printf("Enter the rightmost 64 bit of the key:");
     scanf("%lu", &RightKey);
-    //printf("The right-key is %lu \n", RightKey);
 
     printf("Enter the leftmost 64 bit of the key:");
     scanf("%lu", &LeftKey);
-    //printf("The left-key is %lu \n", LeftKey);
-}
-
-void getKey(char * byte)
-{
-
-    char leftFour = ((*byte) & 0xF0 ) >> 4;
-    char rightFour = (*byte) & 0x0F;
-
-    printf("%x%x", leftFour, rightFour);
-    
 }
 
 
@@ -105,7 +93,6 @@ void firstStep()
     long unsigned int temp = (LeftKey << 45); // old left key becomes the values from 45 to 60 [ 16 bits]
     long unsigned int of3 = (right19[2] & 0x07) << 61; // previous last 3 bits becomes the bits 61-62-63
 
-    //printf("LeftKey:%lx | temp:%lx\n",LeftKey,  (LeftKey << 45));
 
     temp = of3 | temp;
 
@@ -128,11 +115,8 @@ void firstStep()
 void secondStep()
 {
     long unsigned int c = (LeftKey >> 12);
-    //printf("LeftKey is %x and c is %x\n", LeftKey, c);
     long unsigned int s = (S(c) << 12);
-    //printf("s is %x\n", s);
     LeftKey = (LeftKey & 0x0FFF) | s;
-    //printf("LeftKey:%x\n",LeftKey);
 }
 
 void thirdStep(unsigned int i)
@@ -147,16 +131,9 @@ void thirdStep(unsigned int i)
 void updateKey(int i)
 {
     
-    //printKey();
     firstStep();
-    //printf("After first\n");
-    //printKey();
     secondStep();
-    //printf("After second\n");
-    //printKey();
     thirdStep(i+1);
-    //printf("After third\n");
-    //printKey();
     return;
 }
 
